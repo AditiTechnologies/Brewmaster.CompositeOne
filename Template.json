@@ -1,0 +1,114 @@
+{
+  "Name": "TakeOne",
+  "Description": "Take One for Brewmaster Composite Template",
+  "Parameters": [
+    {
+      "Name": "Region",
+      "Type": "String",
+      "TypeHint": "AzureRegionName",
+      "Description": "Name of Azure region."
+    },
+    {
+      "Name": "AffinityGroup",
+      "Type": "String",
+      "TypeHint": "AzureAffinityGroupName",
+      "Description": "Name of Azure affinity group."
+    },
+    {
+      "Name": "CloudService",
+      "Type": "String",
+      "TypeHint": "AzureCloudServiceName",
+      "Description": "Name of the Azure Cloud Service."
+    },
+    {
+      "Name": "DiskStore",
+      "Type": "String",
+      "TypeHint": "AzureStorageName",
+      "Description": "Name of Azure disk storage account."
+    },
+    {
+      "Name": "VMSize",
+      "Type": "String",
+      "TypeHint": "AzureRoleSize",
+      "Description": "Size of the server VMs.",
+      "Default": "Small"
+    },
+    {
+      "Name": "AdminName",
+      "Type": "String",
+      "TypeHint": "username",
+      "Description": "Name of local administrator account.",
+      "Minimum": 1.0,
+      "Maximum": 64.0
+    },
+    {
+      "Name": "AdminPassword",
+      "Type": "String",
+      "TypeHint": "password",
+      "Description": "Password of local administrator account.",
+      "MaskValue": true,
+      "Minimum": 8.0,
+      "Maximum": 127.0
+    },
+    {
+      "Name": "ServerNamePrefix",
+      "Type": "String",
+      "Description": "Name prefix for ElasticSearch servers.",
+      "Default": "esn",
+      "AllowedRegex": "^[a-zA-Z][a-zA-Z0-9-]{1,13}$",
+      "AllowedDescription": "Must contain 3 to 14 letters, numbers, and hyphens. Must start with a letter."
+    },
+    {
+      "Name": "AzureCertificateUrl",
+      "Type": "String",
+      "TypeHint": "string",
+      "Description": "URL to Azure certificate.",
+      "Minimum": 8.0,
+      "Maximum": 127.0
+    },
+    {
+      "Name": "AzureCertificatePassword",
+      "Type": "String",
+      "TypeHint": "password",
+      "Description": "Password for the certificate file.",
+      "MaskValue": true,
+      "Minimum": 8.0,
+      "Maximum": 127.0
+    },
+    {
+      "Name": "AzureSubscriptionId",
+      "Type": "String",
+      "TypeHint": "Guid",
+      "Description": "Subscription Id.",
+      "Minimum": 8.0,
+      "Maximum": 127.0
+    },
+    {
+      "Name": "NumberOfElasticSearchServers",
+      "Type": "Number",
+      "TypeHint": "integer",
+      "Description": "Number of ElasticSearch servers.",
+      "Default": "2",
+      "AllowedRegex": "^\\d+$",
+      "AllowedDescription": "Must enter a positive integer between 2 and 100.",
+      "Minimum": 2.0,
+      "Maximum": 100.0
+    },
+    {
+      "Name": "DataDiskSize",
+      "Type": "Number",
+      "TypeHint": "integer",
+      "Description": "Size of Data disk(GB).",
+      "Default": "100",
+      "AllowedRegex": "^\\d+$",
+      "AllowedDescription": "Must enter a positive integer between 2 and 1024.",
+      "Minimum": 2.0,
+      "Maximum": 1024.0
+    }
+  ],
+  "ParameterMap": [],
+  "Packages": [
+    "af817d05-6307-5095-a2f8-854482fe788e",
+    "2fdab0e1-365b-5aca-831f-a950e0b1ebe2"
+  ]
+}
