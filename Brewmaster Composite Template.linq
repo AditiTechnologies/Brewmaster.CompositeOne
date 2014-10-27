@@ -7,9 +7,9 @@
 void Main()
 {
 	var template = WithTemplateExtensions.CreateCompositeTemplate("TakeOne","Take One for Brewmaster Composite Template")
-										.WithPackage(Guid.Parse("af817d05-6307-5095-a2f8-854482fe788e"))
-										.WithPackage(Guid.Parse("2fdab0e1-365b-5aca-831f-a950e0b1ebe2"));
-	
+										.WithPackage("es","af817d05-6307-5095-a2f8-854482fe788e","master")
+										.WithPackage("arr","2fdab0e1-365b-5aca-831f-a950e0b1ebe2","master");
+										
 	//Elastic Search Parameters
 	template = template.WithParameter("Region", ParameterType.String, "Name of Azure region.", "AzureRegionName")
                 .WithParameter("AffinityGroup", ParameterType.String, "Name of Azure affinity group.",
@@ -20,7 +20,7 @@ void Main()
                                "AzureStorageName")
                 .WithParameter("VMSize", ParameterType.String, "Size of the server VMs.", "AzureRoleSize",
                                p => p.WithDefaultValue("Small"))
-                .WithParameter("AdminName", ParameterType.String, "Name of local administrator account.", "username",
+                .WithParameter("VmAdminName", ParameterType.String, "Name of local administrator account.mapped", "username",
                                p => p.WithLimits(1, 64))
                 .WithParameter("AdminPassword", ParameterType.String, "Password of local administrator account.",
                                "password",
@@ -46,24 +46,10 @@ void Main()
                                p => p.WithDefaultValue("100")
                                      .WithLimits(2, 1024)
                                      .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 1024."));
-									 
-//	//ARR paramters
-//	template = template.WithParameter("Region", ParameterType.String, "Name of Azure region.", "AzureRegionName")
-//                .WithParameter("AffinityGroup", ParameterType.String, "Name of Azure affinity group.",
-//                               "AzureAffinityGroupName")
-//                .WithParameter("CloudService", ParameterType.String, "Name of the Azure Cloud Service.",
-//                               "AzureCloudServiceName")
-//                .WithParameter("DiskStore", ParameterType.String, "Name of Azure disk storage account.",
-//                               "AzureStorageName")
-//                .WithParameter("VMSize", ParameterType.String, "Size of the server VMs.", "AzureRoleSize",
-//                               p => p.WithDefaultValue("Small"))
-//                .WithParameter("AdminName", ParameterType.String, "Name of local administrator account.", "username",
-//                               p => p.WithLimits(1, 64))
-//                .WithParameter("AdminPassword", ParameterType.String, "Password of local administrator account.",
-//                               "password",
-//                               p => p.WithLimits(8, 127), maskValue: true)
-//                .WithParameter("ServerNamePrefix", ParameterType.String, "Name prefix for web servers.",
-				
+
+	template.MapParameter("VmAdminName","es","AdminName")
+		.MapParameter("VmAdminName","web","AdminName");
+		
 	template.Save(@"E:\Git_Local\Brewmaster.CompositeOne\Brewmaster.CompositeOne\");
 
 }

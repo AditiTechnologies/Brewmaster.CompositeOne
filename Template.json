@@ -34,10 +34,10 @@
       "Default": "Small"
     },
     {
-      "Name": "AdminName",
+      "Name": "VmAdminName",
       "Type": "String",
       "TypeHint": "username",
-      "Description": "Name of local administrator account.",
+      "Description": "Name of local administrator account.mapped",
       "Minimum": 1.0,
       "Maximum": 64.0
     },
@@ -106,9 +106,28 @@
       "Maximum": 1024.0
     }
   ],
-  "ParameterMap": [],
+  "ParameterMaps": [
+	{
+		"ParameterName": "VmAdminName",
+		"TemplateName": "es",
+		"TemplateParameterName": "AdminName"
+	},
+	{
+		"ParameterName": "VmAdminName",
+		"TemplateName": "arr",
+		"TemplateParameterName": "AdminName"
+	}
+  ],
   "Packages": [
-    "af817d05-6307-5095-a2f8-854482fe788e",
-    "2fdab0e1-365b-5aca-831f-a950e0b1ebe2"
+    {
+      "Name": "es",
+      "PackageId": "af817d05-6307-5095-a2f8-854482fe788e",
+      "Commit": "master"
+    },
+    {
+      "Name": "arr",
+      "PackageId": "2fdab0e1-365b-5aca-831f-a950e0b1ebe2",
+      "Commit": "master"
+    }
   ]
 }
