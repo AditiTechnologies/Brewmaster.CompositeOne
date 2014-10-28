@@ -109,12 +109,12 @@
   "ParameterMaps": [
 	{
 		"ParameterName": "VmAdminName",
-		"TemplateName": "es",
+		"PackageName": "es",
 		"TemplateParameterName": "AdminName"
 	},
 	{
 		"ParameterName": "VmAdminName",
-		"TemplateName": "arr",
+		"PackageName": "arr",
 		"TemplateParameterName": "AdminName"
 	}
   ],
