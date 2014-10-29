@@ -34,7 +34,7 @@
       "Default": "Small"
     },
     {
-      "Name": "VmAdminName",
+      "Name": "AdminName",
       "Type": "String",
       "TypeHint": "username",
       "Description": "Name of local administrator account.mapped",
