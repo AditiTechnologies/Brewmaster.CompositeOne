@@ -10,8 +10,8 @@ void Main()
 	var template = WithTemplateExtensions.CreateCompositeTemplate("TakeOne","Take One for Brewmaster Composite Template")
 										.WithPackage("es","af817d05-6307-5095-a2f8-854482fe788e","master")
 										.WithPackage("arr","2fdab0e1-365b-5aca-831f-a950e0b1ebe2","master")
-										.MapParameter("VmAdminName","es","AdminName")
-										.MapParameter("VmAdminName","web","AdminName");
+										.WithParameterMap("VmAdminName","es","AdminName")
+										.WithParameterMap("VmAdminName","web","AdminName");
 										
 	//Elastic Search Parameters
 	template = template.WithParameter("Region", ParameterType.String, "Name of Azure region.", "AzureRegionName")
