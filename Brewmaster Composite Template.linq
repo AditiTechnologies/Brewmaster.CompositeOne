@@ -2,13 +2,16 @@
   <Reference Relative="..\..\Brewmaster\brewmaster\src\Brewmaster.TemplateSDK.Contracts\bin\Debug\Brewmaster.TemplateSDK.Contracts.dll">E:\Git_Local\Brewmaster\brewmaster\src\Brewmaster.TemplateSDK.Contracts\bin\Debug\Brewmaster.TemplateSDK.Contracts.dll</Reference>
   <Namespace>Brewmaster.TemplateSDK.Contracts.Fluent</Namespace>
   <Namespace>Brewmaster.TemplateSDK.Contracts.Models</Namespace>
+  <Namespace>Brewmaster.TemplateSDK.Contracts.Serialization</Namespace>
 </Query>
 
 void Main()
 {
 	var template = WithTemplateExtensions.CreateCompositeTemplate("TakeOne","Take One for Brewmaster Composite Template")
 										.WithPackage("es","af817d05-6307-5095-a2f8-854482fe788e","master")
-										.WithPackage("arr","2fdab0e1-365b-5aca-831f-a950e0b1ebe2","master");
+										.WithPackage("arr","2fdab0e1-365b-5aca-831f-a950e0b1ebe2","master")
+										.MapParameter("VmAdminName","es","AdminName")
+										.MapParameter("VmAdminName","web","AdminName");
 										
 	//Elastic Search Parameters
 	template = template.WithParameter("Region", ParameterType.String, "Name of Azure region.", "AzureRegionName")
@@ -46,11 +49,9 @@ void Main()
                                p => p.WithDefaultValue("100")
                                      .WithLimits(2, 1024)
                                      .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 1024."));
-
-	template.MapParameter("VmAdminName","es","AdminName")
-		.MapParameter("VmAdminName","web","AdminName");
 		
-	template.Save(@"E:\Git_Local\Brewmaster.CompositeOne\Brewmaster.CompositeOne\");
+	//template.Save(@"E:\Git_Local\Brewmaster.CompositeOne\Brewmaster.CompositeOne\");
+	template.ToJson().Dump();
 
 }
 
