@@ -23,13 +23,13 @@ void Main()
                                "AzureStorageName")
                 .WithParameter("VMSize", ParameterType.String, "Size of the server VMs.", "AzureRoleSize",
                                p => p.WithDefaultValue("Small"))
-                .WithParameter("VmAdminName", ParameterType.String, "Name of local administrator account.mapped", "username",
+                .WithParameter("AdminName", ParameterType.String, "Name of local administrator account.mapped", "username",
                                p => p.WithLimits(1, 64))
                 .WithParameter("AdminPassword", ParameterType.String, "Password of local administrator account.",
                                "password",
                                p => p.WithLimits(8, 127), maskValue: true)
                 .WithParameter("ARRServerNamePrefix", ParameterType.String, "Name prefix for ARR servers.",
-                               p => p.WithDefaultValue("esn")
+                               p => p.WithDefaultValue("arr")
                                      .WithRegexValidation(@"^[a-zA-Z][a-zA-Z0-9-]{1,13}$",
                                                           "Must contain 3 to 14 letters, numbers, and hyphens. Must start with a letter."))
 				.WithParameter("ESServerNamePrefix", ParameterType.String, "Name prefix for ElasticSearch servers.",
