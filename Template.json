@@ -34,7 +34,7 @@
       "Default": "Small"
     },
     {
-      "Name": "AdminName",
+      "Name": "VmAdminName",
       "Type": "String",
       "TypeHint": "username",
       "Description": "Name of local administrator account.mapped",
@@ -51,15 +51,7 @@
       "Maximum": 127.0
     },
     {
-      "Name": "ARRServerNamePrefix",
-      "Type": "String",
-      "Description": "Name prefix for ARR servers.",
-      "Default": "esn",
-      "AllowedRegex": "^[a-zA-Z][a-zA-Z0-9-]{1,13}$",
-      "AllowedDescription": "Must contain 3 to 14 letters, numbers, and hyphens. Must start with a letter."
-    },
-	{
-      "Name": "ESServerNamePrefix",
+      "Name": "ServerNamePrefix",
       "Type": "String",
       "Description": "Name prefix for ElasticSearch servers.",
       "Default": "esn",
@@ -112,19 +104,30 @@
       "AllowedDescription": "Must enter a positive integer between 2 and 1024.",
       "Minimum": 2.0,
       "Maximum": 1024.0
+    },
+    {
+      "Name": "NumberOfWebServers",
+      "Type": "Number",
+      "TypeHint": "integer",
+      "Description": "Number of ARR servers.",
+      "Default": "2",
+      "AllowedRegex": "^\\d+$",
+      "AllowedDescription": "Must enter a positive integer between 2 and 100.",
+      "Minimum": 2.0,
+      "Maximum": 100.0
     }
   ],
   "ParameterMaps": [
-	{
-		"ParameterName": "ARRServerNamePrefix",
-		"PackageName": "arr",
-		"TemplateParameterName": "ServerNamePrefix"
-	},
-	{
-		"ParameterName": "ESServerNamePrefix",
-		"PackageName": "es",
-		"TemplateParameterName": "ServerNamePrefix"
-	}
+    {
+      "ParameterName": "ARRServerNamePrefix",
+      "PackageName": "es",
+      "TemplateParameterName": "ServerNamePrefix"
+    },
+    {
+      "ParameterName": "ESServerNamePrefix",
+      "PackageName": "web",
+      "TemplateParameterName": "ServerNamePrefix"
+    }
   ],
   "Packages": [
     {

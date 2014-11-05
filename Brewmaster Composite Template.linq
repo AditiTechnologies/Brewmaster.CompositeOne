@@ -10,8 +10,8 @@ void Main()
 	var template = WithTemplateExtensions.CreateCompositeTemplate("TakeOne","Take One for Brewmaster Composite Template")
 										.WithPackage("es","af817d05-6307-5095-a2f8-854482fe788e","master")
 										.WithPackage("arr","2fdab0e1-365b-5aca-831f-a950e0b1ebe2","master")
-										.WithParameterMap("VmAdminName","es","AdminName")
-										.WithParameterMap("VmAdminName","web","AdminName");
+										.WithParameterMap("ARRServerNamePrefix","es","ServerNamePrefix")
+										.WithParameterMap("ESServerNamePrefix","web","ServerNamePrefix");
 										
 	//Elastic Search Parameters
 	template = template.WithParameter("Region", ParameterType.String, "Name of Azure region.", "AzureRegionName")
@@ -48,10 +48,14 @@ void Main()
 				.WithParameter("DataDiskSize", ParameterType.Number, "Size of Data disk(GB).", "integer",
                                p => p.WithDefaultValue("100")
                                      .WithLimits(2, 1024)
-                                     .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 1024."));
+                                     .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 1024."))
+				.WithParameter("NumberOfWebServers", ParameterType.Number, "Number of ARR servers.", "integer",
+                               p => p.WithDefaultValue("2")
+                                     .WithLimits(2, 100)
+                                     .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 100."));
 		
-	//template.Save(@"E:\Git_Local\Brewmaster.CompositeOne\Brewmaster.CompositeOne\");
-	template.ToJson().Dump();
+	template.Save(@"E:\Git_Local\Brewmaster.CompositeOne\Brewmaster.CompositeOne\");
+	//template.ToJson().Dump();
 
 }
 
