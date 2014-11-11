@@ -128,12 +128,12 @@
   "ParameterMaps": [
     {
       "ParameterName": "ARRServerNamePrefix",
-      "PackageName": "es",
+      "PackageName": "arr",
       "TemplateParameterName": "ServerNamePrefix"
     },
     {
       "ParameterName": "ESServerNamePrefix",
-      "PackageName": "web",
+      "PackageName": "es",
       "TemplateParameterName": "ServerNamePrefix"
     }
   ],
