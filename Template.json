@@ -128,24 +128,24 @@
   "ParameterMaps": [
     {
       "ParameterName": "ARRServerNamePrefix",
-      "PackageName": "arr",
+      "TemplateName": "arr",
       "TemplateParameterName": "ServerNamePrefix"
     },
     {
       "ParameterName": "ESServerNamePrefix",
-      "PackageName": "es",
+      "TemplateName": "es",
       "TemplateParameterName": "ServerNamePrefix"
     }
   ],
-  "Packages": [
+  "Templates": [
     {
       "Name": "es",
-      "PackageId": "af817d05-6307-5095-a2f8-854482fe788e",
+      "TemplateId": "af817d05-6307-5095-a2f8-854482fe788e",
       "Commit": "master"
     },
     {
       "Name": "arr",
-      "PackageId": "2fdab0e1-365b-5aca-831f-a950e0b1ebe2",
+      "TemplateId": "2fdab0e1-365b-5aca-831f-a950e0b1ebe2",
       "Commit": "master"
     }
   ]
